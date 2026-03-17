@@ -1,17 +1,19 @@
-nare: CI
+name: CI
+
 on:  [push]
-jobs:
+
+jobs: 
   sast_scan:
-  nare: Bandit Scan
-  runs-cn: ubuntu-latest
+    name: Run Bandit Scan
+    runs-on: ubuntu-latest
 
-  steps:
-  - nare: Checkout code
-  uses: action/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  - nare: install python 
-  uses: actions/setup-python@v2
-  with:
-   python-version:3.8
-  - nare: install Bandit
-   run: pip install bandit
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install Bandit
+      run: pip install bandit
